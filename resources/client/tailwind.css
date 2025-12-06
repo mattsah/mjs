@@ -1,0 +1,74 @@
+/**
+ * Standalone CLI should be used
+ */
+@import "tailwindcss" source("..");
+
+@theme {
+    --font-serif: "Fraunces", serif;
+    --font-sans: "Source Sans 3", sans-serif;
+    --font-mono: "Source Code Pro", monospace;
+
+    --color-blush: rgb(255, 166, 115);
+    --color-olive: rgb(198, 222, 65);
+    --color-water: rgb(45, 110, 126);
+    --color-storm: rgb(21, 59, 68);
+    --color-night: rgb(7, 28, 33);
+
+    --color-fore: var(--color-slate-200);
+    --color-main: var(--color-night);
+
+    --tw-leading: 2em;
+}
+
+@layer base {
+    html {
+        @apply bg-main text-fore p-8 leading-loose font-mono text-sm;
+    }
+
+    body {
+        @apply m-6 bg-transparent;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        @apply font-serif leading-tight;
+    }
+
+    h1 {
+        @apply text-center text-[6dvh] mb-4;
+    }
+
+    h2 {
+        @apply text-[4dvh] mb-4;
+    }
+
+    h3 {
+        @apply text-[3dvh] mb-4;
+    }
+
+    ul:not([class]) {
+        @apply list-disc list-outside my-2 ml-6 italic text-fore/80;
+    }
+
+    a[href] {
+        @apply underline text-blush;
+    }
+
+    p {
+        @apply mb-4;
+    }
+
+    code {
+        @apply inline-block! rounded-lg overflow-hidden border-water bg-black/20! border border-dashed text-sm align-middle py-1 px-3 text-olive mx-auto font-mono;
+    }
+
+    pre > code {
+        @apply inline-block! w-full md:w-auto rounded-lg overflow-hidden border-water bg-black/20! border border-dashed text-sm mb-4;
+    }
+
+    .prose {
+    }
+
+    .intro {
+        @apply md:columns-2 gap-12;
+    }
+}

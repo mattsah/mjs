@@ -1,0 +1,135 @@
+<x:main>
+    <h1>Developing Mininim</h1>
+    <section class="prose">
+        <section class="intro">
+            <p>
+                <a href="https://github.com/mattsah/mininim">Mininim</a> is a general purpose application framework and library for Nim.  Development started in early 2025 while I was still working at Jobs for the Future (JFF) and came out of personal research into high-performance options for REST APIs and microservices.  Nim was chosen primarily for its comprehensive meta-programming features which enable the development of small DSLs and custom patterns that further enable extremely rapid development and prototyping.
+            </p>
+            <p>
+                Investigation and development was re-ignited in the fall of 2025 to help fill future needs related to Primd with the intention being to fold Mininim into it as an official project.  The goals remain largely the same:
+            </p>
+            <ul>
+                <li>Component-based server-side dynanmic templating for integration with HTMX and AlpineJS.</li>
+                <li>Easy addition of new routes and commands via local behavior.</li>
+                <li>Extensibile and modular design for a la carte feature requirements.</li>
+            </ul>
+            <p>
+                This site, uses Mininim's dynamic templating and "pages" middleware (modeled after Hiraeth) to provide a simple portfolio solution while forwarding development via a real-world use case.  Below is a list of features and a preview into how it looks to develop in Mininim.
+            </p>
+        </section>
+        <x class:="my-4">
+            <section>
+                <h2>Pages Middleware</h2>
+                <x:code:sample>
+                    <script type="nim">
+                        import
+                            dotenv,
+                            mininim/loader,
+                            mininim/dic,
+                            mininim/cli,
+                            mininim/mdlw/pages
+
+                        if os.fileExists(".env"):
+                            dotenv.load()
+
+                        loader.scan("./local")
+
+                        var
+                            app = App.init()
+                            console = app.get(Console)
+
+                        quit(console.run())
+                    </script>
+                    <div>
+                        <p>
+                            The "pages" middleware is designed to allow direct to template routing based simple directory structure.  You can think of it as something of a return to static HTML files with the primary caveat being that you have the full power of the templating language.  Addint the functionality to a standard Mininim application is as simple <code>import mininim/mdlw/pages</code> with the <code>mininim/web</code> package installed.
+                        </p>
+                        <x:code:sample>
+                            <p>
+                                Within the pages module, the middleware is automatically registered via Mininim's unique <code>shape</code> directive.  By importing the middleware, the application will also import the requisite CLI command to start the HTTP Server.
+                            </p>
+                            <script type="nim">
+                            shape Pages: @[
+                                Middleware(
+                                    name: "pages",
+                                    priority: 900
+                                )
+                            ]
+                            </script>
+                        </x:code:sample>
+                    </div>
+                </x:code:sample>
+            </section>
+            <section>
+                <h2>Adding Pages and Components</h2>
+                <x:code:sample>
+                    <p>
+                        Adding a page is as simple as adding a file starting with an <code>@</code> symbol to the <code>resources/pages</code> directory.  For example, we could add the following to <code>resources/pages/@index.html</code> to create our initial landing page.
+                    </p>
+                    <script type="twig">
+                        <x:main>
+                            <h1>Hello World!</h1>
+                        </x:main>
+                    </script>
+                </x:code:sample>
+                <x:code:sample>
+                    <p>
+                        This particular example, however, won't work until we've defined our <code>&lt;x:main&gt;</code> tag in <code>resources/tags/main.html</code>.  In this example, our custom component includes the overall site structure.  Note the use of the <code>&lt;mix&gt;</code> tag, which enables the content of our <code><esc>{{ children }}</esc></code> to be fully parsed and rendered as if it were part of the original DOM.  As you've probably inferred, an <code>&lt;x:*&gt;</code> tag maps to files located in the <code>resources/tags</code> directory.  All subsequent <code>:</code> are converted to <code>/</code> allowing for comprehensive nesting/namespacing support.
+                    </p>
+                    <script type="twig" class="order-first">
+                        <html>
+                            <head>
+                                <meta charset="UTF-8" />
+                                <title>
+                                    {{ title ? "Matthew Sahagian : Porfolio" }}
+                                </title>
+                            </head>
+                            <body class="max-w-6xl mx-auto">
+                                <mix>
+                                     {{ children }}
+                                </mix>
+                            </body>
+                        </html>
+                    </script>
+                </x:code:sample>
+            </section>
+            <section>
+                <h3>Component Scope</h3>
+                <x:code:sample>
+                    <p>
+                        Components have an isolated scope.  This means that whenever you call a component from another template, the only variables available within that component are those that are passed by attributes to the component.  For example, the <code>name</code> variable is not directly available in the component or to the children, but the <code>title</code> variable will be.
+                    </p>
+                    <script type="twig">
+                        <set name="Bob" />
+                        <x:main title="The Spy Who Awked Me">
+                            <h1>
+                                Hello {{ name ? "World" }}!
+                            </h1>
+                        </x:main>
+                    </script>
+                </x:code:sample>
+                <x:code:sample>
+                    <p>
+                        You can, however, access external scope via the <code>context</code> object or by passing the requisite data in as an attribute.
+                    </p>
+                    <script type="twig">
+                        <set name="Bob" />
+                        <x:main title="The Spy Who Awked Me">
+                            <h1>
+                                Hello {{ context.name ? "World" }}!
+                            </h1>
+                        </x:main>
+                    </script>
+                    <script type="twig">
+                        <set name="Bob" />
+                        <x:main title="The Spy Who Awked Me" name:val="name">
+                            <h1>
+                                Hello {{ name ? "World" }}!
+                            </h1>
+                        </x:main>
+                    </script>
+                </x:code:sample>
+            </section>
+        </x>
+    </section>
+</x:main>

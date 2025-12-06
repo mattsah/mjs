@@ -2,7 +2,8 @@ import
     dotenv,
     mininim/loader,
     mininim/dic,
-    mininim/cli
+    mininim/cli,
+    mininim/mdlw/pages
 
 if os.fileExists(".env"):
     dotenv.load()

@@ -1,0 +1,6 @@
+["secret"]
+
+    pattern = "(007)"
+    mapping = [
+        "action"
+    ]

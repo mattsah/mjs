@@ -2,7 +2,7 @@
 
 version       = "1.0"
 author        = "Matthew J. Sahagian"
-description   = "Mininim Application Skeleton"
+description   = "Portfolio site built in Mininim"
 license       = "MIT"
 binDir        = "bin"
 installExt    = @["nim"]

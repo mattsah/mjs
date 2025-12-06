@@ -1,5 +1,7 @@
 *
 !assets/
 !assets/**
+!scripts/
+!scripts/**
 !favicon.ico
 !.gitignore
