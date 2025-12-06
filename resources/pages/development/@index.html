@@ -6,15 +6,15 @@
                 <a href="https://github.com/mattsah/mininim">Mininim</a> is a general purpose application framework and library for Nim.  Development started in early 2025 while I was still working at Jobs for the Future (JFF) and came out of personal research into high-performance options for REST APIs and microservices.  Nim was chosen primarily for its comprehensive meta-programming features which enable the development of small DSLs and custom patterns that further enable extremely rapid development and prototyping.
             </p>
             <p>
-                Investigation and development was re-ignited in the fall of 2025 to help fill future needs related to Primd with the intention being to fold Mininim into it as an official project.  The goals remain largely the same:
+                Investigation and development was re-ignited in the fall of 2025 to help fill future needs related to <a href="https://primd.app">Primd</a> with the project being officially transferred in December.  Though specific features will be prioritized around Primd's use cases, the general goals remain largely the same:
             </p>
             <ul>
-                <li>Component-based server-side dynanmic templating for integration with HTMX and AlpineJS.</li>
+                <li>Component-based server-side dynanmic templating for integration with <a href="https://htmx.org/">HTMX</a> and <a href="https://alpinejs.dev/">AlpineJS</a>.</li>
                 <li>Easy addition of new routes and commands via local behavior.</li>
                 <li>Extensibile and modular design for a la carte feature requirements.</li>
             </ul>
             <p>
-                This site, uses Mininim's dynamic templating and "pages" middleware (modeled after Hiraeth) to provide a simple portfolio solution while forwarding development via a real-world use case.  Below is a list of features and a preview into how it looks to develop in Mininim.
+                This site, uses Mininim's dynamic templating and "pages" middleware (modeled after <a href="https://hiraeth.dev">Hiraeth</a>) to provide a simple portfolio solution while forwarding development via a real-world use case.  Below is a list of features and a preview into how it looks to develop in Mininim.
             </p>
         </section>
         <x class:="my-4">
@@ -81,7 +81,7 @@
                             <head>
                                 <meta charset="UTF-8" />
                                 <title>
-                                    {{ title ? "Matthew Sahagian : Porfolio" }}
+                                    {{ title ? "Matthew Sahagian : Portfolio" }}
                                 </title>
                             </head>
                             <body class="max-w-6xl mx-auto">
@@ -127,6 +127,59 @@
                                 Hello {{ name ? "World" }}!
                             </h1>
                         </x:main>
+                    </script>
+                </x:code:sample>
+            </section>
+            <section>
+                <h3>Merge Attributes and Fragments</h3>
+                <x:code:sample>
+                    <div>
+                        <p>
+                            When working with components, it's common to need to add attributes to the underlying element(s) they represent.  This is most common for the <code>class</code> attribute, but with HTMX and AlpineJS it can useful for many more examples.
+                        </p>
+                        <p>
+                            Merge attributes can be used on any <code>&lt;x&gt;</code> style element and end with a <code>:</code> to distinguish them from actual component attributes.  The <code>:</code> is stripped and the content is merged into all top-level children's attributes by the same name.
+                        </p>
+                    </div>
+                    <div class="order-first" x-data>
+                        <p class="mb-2">
+                            Example component <code>resources/tags/button.html</code>:
+                        </p>
+                        <script type="twig">
+                            <button
+                                class="px-4 py-1 rounded-md bg-white/8 text-coral cursor-pointer"
+                            >
+                                {{ children ? text }}
+                            </button>
+                        </script>
+                        <p class="mb-2">
+                            Used with merge attributes:
+                        </p>
+                        <script type="twig">
+                            <x:button x-on:click:="alert('Hello Mininim!')" text="Click Me!" />
+                        </script>
+                        <p class="mb-2">
+                            Result:
+                        </p>
+                        <x:button x-on:click:="alert('Hello Mininim!')" text="Click Me!" />
+                    </div>
+                </x:code:sample>
+                <x:code:sample>
+                    <p>
+                        In addition to components like <code>&lt;x:button&gt;</code>, it's also possible to use the <code>&lt;x&gt;</code> tag with no path.  When used like this, it acts as an "invisible" fragment wrapper which is not, itself, inserted in the DOM.  Its children, however, will be inserted in its place.  Combining this with merge attributes, we can see some immediate utility for easily applying common attributes across multiple elements.
+                    </p>
+                    <script type="twig">
+                        <x class:="bg-white/10 p-4 my-6">
+                            <p>
+                                Each of these child paragraphs will have the class attribute.
+                            </p>
+                            <p>
+                                But just as with components, only the top-level children.
+                            </p>
+                            <p>
+                                Not <span>this span tag</span> or any subsequent children.
+                            </p>
+                        </x>
                     </script>
                 </x:code:sample>
             </section>
