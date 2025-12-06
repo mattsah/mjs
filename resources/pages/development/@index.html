@@ -142,26 +142,28 @@
                         </p>
                     </div>
                     <div class="order-first" x-data>
-                        <p class="mb-2">
-                            Example component <code>resources/tags/button.html</code>:
-                        </p>
-                        <script type="twig">
-                            <button
-                                class="px-4 py-1 rounded-md bg-white/8 text-coral cursor-pointer"
-                            >
-                                {{ children ? text }}
-                            </button>
-                        </script>
-                        <p class="mb-2">
-                            Used with merge attributes:
-                        </p>
-                        <script type="twig">
+                        <x class:="mb-2">
+                            <p>
+                                Example component <code>resources/tags/button.html</code>:
+                            </p>
+                            <script type="twig">
+                                <button
+                                    class="px-4 py-1 rounded-md bg-white/8 text-coral cursor-pointer"
+                                >
+                                    {{ children ? text }}
+                                </button>
+                            </script>
+                            <p>
+                                Used with merge attributes:
+                            </p>
+                            <script type="twig">
+                                <x:button x-on:click:="alert('Hello Mininim!')" text="Click Me!" />
+                            </script>
+                            <p>
+                                Result:
+                            </p>
                             <x:button x-on:click:="alert('Hello Mininim!')" text="Click Me!" />
-                        </script>
-                        <p class="mb-2">
-                            Result:
-                        </p>
-                        <x:button x-on:click:="alert('Hello Mininim!')" text="Click Me!" />
+                        </x>
                     </div>
                 </x:code:sample>
                 <x:code:sample>
