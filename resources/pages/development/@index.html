@@ -21,7 +21,7 @@
             <section>
                 <h2>Pages Middleware</h2>
                 <x:code:sample>
-                    <script type="nim">
+                    <x:code :esc type="nim">
                         import
                             dotenv,
                             mininim/loader,
@@ -39,7 +39,7 @@
                             console = app.get(Console)
 
                         quit(console.run())
-                    </script>
+                    </x:code>
                     <div>
                         <p>
                             The "pages" middleware is designed to allow direct to template routing based simple directory structure.  You can think of it as something of a return to static HTML files with the primary caveat being that you have the full power of the templating language.  Addint the functionality to a standard Mininim application is as simple <code>import mininim/mdlw/pages</code> with the <code>mininim/web</code> package installed.
@@ -48,14 +48,14 @@
                             <p>
                                 Within the pages module, the middleware is automatically registered via Mininim's unique <code>shape</code> directive.  By importing the middleware, the application will also import the requisite CLI command to start the HTTP Server.
                             </p>
-                            <script type="nim">
-                            shape Pages: @[
-                                Middleware(
-                                    name: "pages",
-                                    priority: 900
-                                )
-                            ]
-                            </script>
+                            <x:code :esc type="nim">
+                                shape Pages: @[
+                                    Middleware(
+                                        name: "pages",
+                                        priority: 900
+                                    )
+                                ]
+                            </x:code>
                         </x:code:sample>
                     </div>
                 </x:code:sample>
@@ -66,17 +66,17 @@
                     <p>
                         Adding a page is as simple as adding a file starting with an <code>@</code> symbol to the <code>resources/pages</code> directory.  For example, we could add the following to <code>resources/pages/@index.html</code> to create our initial landing page.
                     </p>
-                    <script type="twig">
+                    <x:code :esc type="twig">
                         <x:main>
                             <h1>Hello World!</h1>
                         </x:main>
-                    </script>
+                    </x:code>
                 </x:code:sample>
                 <x:code:sample>
                     <p>
                         This particular example, however, won't work until we've defined our <code>&lt;x:main&gt;</code> tag in <code>resources/tags/main.html</code>.  In this example, our custom component includes the overall site structure.  Note the use of the <code>&lt;mix&gt;</code> tag, which enables the content of our <code><esc>{{ children }}</esc></code> to be fully parsed and rendered as if it were part of the original DOM.  As you've probably inferred, an <code>&lt;x:*&gt;</code> tag maps to files located in the <code>resources/tags</code> directory.  All subsequent <code>:</code> are converted to <code>/</code> allowing for comprehensive nesting/namespacing support.
                     </p>
-                    <script type="twig" class="order-first">
+                    <x:code :esc type="twig" class:="order-first">
                         <html>
                             <head>
                                 <meta charset="UTF-8" />
@@ -90,7 +90,7 @@
                                 </mix>
                             </body>
                         </html>
-                    </script>
+                    </x:code>
                 </x:code:sample>
             </section>
             <section>
@@ -99,35 +99,35 @@
                     <p>
                         Components have an isolated scope.  This means that whenever you call a component from another template, the only variables available within that component are those that are passed by attributes to the component.  For example, the <code>name</code> variable is not directly available in the component or to the children, but the <code>title</code> variable will be.
                     </p>
-                    <script type="twig">
+                    <x:code :esc type="twig">
                         <set name="Bob" />
                         <x:main title="The Spy Who Awked Me">
                             <h1>
                                 Hello {{ name ? "World" }}!
                             </h1>
                         </x:main>
-                    </script>
+                    </x:code>
                 </x:code:sample>
                 <x:code:sample>
                     <p>
                         You can, however, access external scope via the <code>context</code> object or by passing the requisite data in as an attribute.
                     </p>
-                    <script type="twig">
+                    <x:code :esc type="twig">
                         <set name="Bob" />
                         <x:main title="The Spy Who Awked Me">
                             <h1>
                                 Hello {{ context.name ? "World" }}!
                             </h1>
                         </x:main>
-                    </script>
-                    <script type="twig">
+                    </x:code>
+                    <x:code :esc type="twig">
                         <set name="Bob" />
                         <x:main title="The Spy Who Awked Me" name:val="name">
                             <h1>
                                 Hello {{ name ? "World" }}!
                             </h1>
                         </x:main>
-                    </script>
+                    </x:code>
                 </x:code:sample>
             </section>
             <section>
@@ -146,19 +146,19 @@
                             <p>
                                 Example component <code>resources/tags/button.html</code>:
                             </p>
-                            <script type="twig">
+                            <x:code :esc type="twig">
                                 <button
                                     class="px-4 py-1 rounded-md bg-white/8 text-coral cursor-pointer"
                                 >
                                     {{ children ? text }}
                                 </button>
-                            </script>
+                            </x:code>
                             <p>
                                 Used with merge attributes:
                             </p>
-                            <script type="twig">
+                            <x:code :esc type="twig">
                                 <x:button x-on:click:="alert('Hello Mininim!')" text="Click Me!" />
-                            </script>
+                            </x:code>
                             <p>
                                 Result:
                             </p>
@@ -170,7 +170,7 @@
                     <p>
                         In addition to components like <code>&lt;x:button&gt;</code>, it's also possible to use the <code>&lt;x&gt;</code> tag with no path.  When used like this, it acts as an "invisible" fragment wrapper which is not, itself, inserted in the DOM.  Its children, however, will be inserted in its place.  Combining this with merge attributes, we can see some immediate utility for easily applying common attributes across multiple elements.
                     </p>
-                    <script type="twig">
+                    <x:code :esc type="twig">
                         <x class:="bg-white/10 p-4 my-6">
                             <p>
                                 Each of these child paragraphs will have the class attribute.
@@ -182,7 +182,7 @@
                                 Not <span>this span tag</span> or any subsequent children.
                             </p>
                         </x>
-                    </script>
+                    </x:code>
                 </x:code:sample>
             </section>
         </x>

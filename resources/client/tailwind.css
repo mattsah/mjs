@@ -67,7 +67,7 @@
     }
 
     pre > code {
-        @apply inline-block! w-full lg:w-auto rounded-lg overflow-hidden border-water bg-black/20! border border-dashed text-sm mb-4;
+        @apply w-full lg:w-auto rounded-lg overflow-hidden border-water bg-black/20! border border-dashed text-sm mb-4 whitespace-pre;
     }
 
     .prose {

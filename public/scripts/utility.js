@@ -32,34 +32,20 @@ function normalizeIndentation(text) {
         return line.substring(minIndent);
     });
 
-    return normalizedLines.join('\n');
-}
-
-function convertScriptToPre(scriptTag) {
-    const lang = scriptTag.getAttribute('type');
-    const code = document.createElement('code');
-    const pre = document.createElement('pre');
-    const normalizedContent = normalizeIndentation(scriptTag.textContent);
-
-    for (attribute of scriptTag.attributes) {
-        if (attribute.name != 'type') {
-            pre.setAttribute(attribute.name, attribute.value);
-        }
-    };
-
-    code.className = `language-${lang}`;
-    code.textContent = normalizedContent;
-    pre.appendChild(code);
-    scriptTag.after(pre);
-    scriptTag.remove();
-
-    hljs.highlightElement(code);
+    return normalizedLines.join('\n').trim();
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    const scriptTags = document.querySelectorAll('script[type]:not([type="text/javascript"])');
+    const hljsTags = document.querySelectorAll('pre > code');
 
-    scriptTags.forEach((scriptTag, index) => {
-        convertScriptToPre(scriptTag);
+    hljsTags.forEach((hljsTag, index) => {
+        let
+            pre = hljsTag.parentElement;
+
+        hljsTag.textContent = normalizeIndentation(hljsTag.textContent);
+        pre.innerHTML = '';
+        pre.append(hljsTag);
     })
+
+    hljs.highlightAll();
 });
