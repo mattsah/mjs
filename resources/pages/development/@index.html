@@ -74,7 +74,7 @@
                 </x:code:sample>
                 <x:code:sample>
                     <p>
-                        This particular example, however, won't work until we've defined our <code>&lt;x:main&gt;</code> tag in <code>resources/tags/main.html</code>.  In this example, our custom component includes the overall site structure.  Note the use of the <code>&lt;mix&gt;</code> tag, which enables the content of our <code><esc>{{ children }}</esc></code> to be fully parsed and rendered as if it were part of the original DOM.  As you've probably inferred, an <code>&lt;x:*&gt;</code> tag maps to files located in the <code>resources/tags</code> directory.  All subsequent <code>:</code> are converted to <code>/</code> allowing for comprehensive nesting/namespacing support.
+                        This particular example, however, won't work until we've defined our <code>&lt;x:main&gt;</code> tag in <code>resources/tags/main.html</code>.  In this example, our custom component includes the overall site structure.  Note the use of the <code>&lt;raw&gt;</esc></code> tag, which enables the content of our <code><esc>{{ children }}</esc></code> to be parsed and rendered as if it were part of the original DOM.  As you've probably inferred, an <code>&lt;x:*&gt;</code> tag maps to files located in the <code>resources/tags</code> directory.  All subsequent <code>:</code> are converted to <code>/</code> allowing for comprehensive nesting/namespacing support.
                     </p>
                     <x:code :esc type="twig" class:="order-first">
                         <html>
@@ -85,9 +85,9 @@
                                 </title>
                             </head>
                             <body class="max-w-6xl mx-auto">
-                                <mix>
+                                <raw>
                                      {{ children }}
-                                </mix>
+                                </raw>
                             </body>
                         </html>
                     </x:code>
