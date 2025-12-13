@@ -147,10 +147,10 @@
                                 Example component <code>resources/tags/button.html</code>:
                             </p>
                             <x:code :esc type="twig">
-                                <button
-                                    class="px-4 py-1 rounded-md bg-white/8 text-coral cursor-pointer"
-                                >
-                                    {{ children ? text }}
+                                <button class="px-4 py-1 rounded-md bg-white/8 text-coral cursor-pointer">
+                                    <raw>
+                                        {{ children ? text }}
+                                    </raw>
                                 </button>
                             </x:code>
                             <p>
