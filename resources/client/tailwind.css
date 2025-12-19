@@ -4,6 +4,47 @@
 @import "tailwindcss" source("..");
 
 @theme {
+    /**
+     * Reset
+     */
+    --breakpoint-3xs: 360px;
+    --breakpoint-2xs: 400px;
+    --breakpoint-xs: 480px;
+    --breakpoint-sm: 640px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 1024px;
+    --breakpoint-xl: 1280px;
+    --breakpoint-2xl: 1536px;
+    --breakpoint-3xl: 2880px;
+
+    --container-3xs: 360px;
+    --container-2xs: 400px;
+    --container-xs: 480px;
+    --container-sm: 640px;
+    --container-md: 768px;
+    --container-lg: 1024px;
+    --container-xl: 1280px;
+    --container-2xl: 1536px;
+    --container-3xl: 2880px;
+
+    --text-9xl: 3.50rem;
+    --text-8xl: 3.25rem;
+    --text-6xl: 3.00rem;
+    --text-7xl: 2.75rem;
+    --text-6xl: 2.50rem;
+    --text-5xl: 2.25rem;
+    --text-4xl: 2.00rem;
+    --text-3xl: 1.75rem;
+    --text-2xl: 1.50rem;
+    --text-1xl: var(--text-xl)
+    --text-1xs: var(--text-xs)
+    --text-2xs: 0.50rem;
+    --text-3xs: 0.25rem;
+
+    /**
+     * Custom
+     */
+
     --font-serif: "Fraunces", serif;
     --font-sans: "Source Sans 3", sans-serif;
     --font-mono: "Source Code Pro", monospace;
@@ -22,12 +63,18 @@
 }
 
 @layer base {
+    :root {
+        font-size: clamp(14px, 1dvw, 18px);
+        --spacing: clamp(0.125rem, 0.5dvw,0.5rem);
+    }
+
+
     html {
-        @apply bg-main text-fore p-8 leading-loose font-mono text-sm;
+        @apply bg-main text-fore leading-loose font-mono text-sm;
     }
 
     body {
-        @apply m-6 bg-transparent;
+        @apply @container;
     }
 
     h1, h2, h3, h4, h5, h6 {
@@ -35,20 +82,29 @@
     }
 
     h1 {
-        @apply text-center text-[6dvh] mb-4;
+        @apply text-center text-6xl @xl:text-9xl mb-4;
     }
 
     h2 {
-        @apply text-[4dvh] mb-4;
+        @apply text-5xl @xl:text-8xl mb-4;
     }
 
     h3 {
-        @apply text-[3dvh] mb-4;
+        @apply text-4xl @xl:text-7xl mb-4;
     }
 
     h4 {
-        @apply text-[2.5dvh] mb-4;
+        @apply text-3xl @xl:text-6xl mb-4;
     }
+
+    h5 {
+        @apply text-2xl @xl:text-5xl mb-4;
+    }
+
+    h6 {
+        @apply text-xl @xl:text-4xl mb-4;
+    }
+
 
     ul:not([class]) {
         @apply list-disc list-outside my-2 ml-6 italic text-fore/80;
@@ -63,17 +119,28 @@
     }
 
     code {
-        @apply inline-block! rounded-lg overflow-hidden border-water bg-black/20! border border-dashed text-sm align-middle py-1 px-3 text-olive mx-auto font-mono;
+        @apply inline-block! rounded-lg overflow-hidden border-water bg-black/20! border border-dashed text-sm align-middle py-0.5! px-[1ch]! text-olive mx-auto font-mono;
     }
 
     pre > code {
-        @apply w-full lg:w-auto rounded-lg overflow-hidden border-water bg-black/20! border border-dashed text-sm mb-4 whitespace-pre;
+        @apply w-full @xl:w-auto rounded-lg overflow-hidden border-water bg-black/20! border border-dashed text-sm mb-4 whitespace-pre p-4!;
     }
 
-    .prose {
+    nav {
+        a {
+            @apply no-underline!;
+        }
+    }
+
+    .contain {
+        @apply px-8 @lg:px-16 @2xl:px-24 @3xl:px-[calc((100%-var(--container-2xl))/2)];
+
+        > section {
+            @apply py-8;
+        }
     }
 
     .intro {
-        @apply md:columns-2 gap-12;
+        @apply md:columns-2 gap-8;
     }
 }
