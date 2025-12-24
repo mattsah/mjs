@@ -1,13 +1,13 @@
 <x:main>
     <section>
-        <h1>Developing Mininim</h1>
+        <h1>Mininim</h1>
         <section class="prose">
             <section class="intro">
                 <p>
-                    <a href="https://github.com/mattsah/mininim">Mininim</a> is a general purpose application framework and library for Nim.  Development started in early 2025 while I was still working at Jobs for the Future (JFF) and came out of personal research into high-performance options for REST APIs and microservices.  Nim was chosen primarily for its comprehensive meta-programming features which enable the development of small DSLs and custom patterns that further enable extremely rapid development and prototyping.
+                    <a href="https://github.com/primd-cooperative/mininim">Mininim</a> is a general purpose application framework and library for Nim.  Development started in early 2025 while I was still working at Jobs for the Future (JFF) and came out of personal research into high-performance options for REST APIs and microservices.  Nim was chosen primarily for its comprehensive meta-programming features which enable the development of small DSLs and custom patterns that further enable extremely rapid development and prototyping.
                 </p>
                 <p>
-                    Investigation and development was re-ignited in the fall of 2025 to help fill future needs related to <a href="https://primd.app">Primd</a> with the project being officially transferred in December.  Though specific features will be prioritized around Primd's use cases, the general goals remain largely the same:
+                    Investigation and development was re-ignited in the fall of 2025 to help fill future needs related to <a href="https://primd.app">Primd</a> with the project being officially transferred in December.  This site, uses Mininim's dynamic templating and "pages" middleware (modeled after my PHP Framework, <a href="https://hiraeth.dev">Hiraeth</a>) to provide a simple portfolio solution while forwarding development via a real-world use case.  Though specific features will be prioritized around Primd's use cases, the general more goals remain the same:
                 </p>
                 <ul>
                     <li>Component-based server-side dynanmic templating for integration with <a href="https://htmx.org/">HTMX</a> and <a href="https://alpinejs.dev/">AlpineJS</a>.</li>
@@ -15,10 +15,15 @@
                     <li>Extensibile and modular design for a la carte feature requirements.</li>
                 </ul>
                 <p>
-                    This site, uses Mininim's dynamic templating and "pages" middleware (modeled after <a href="https://hiraeth.dev">Hiraeth</a>) to provide a simple portfolio solution while forwarding development via a real-world use case.  Below is a list of features and a preview into how it looks to develop in Mininim.
+                    Managing multiple early development projects with common dependencies in Nim lead to frustration with their existing package management solutions.  After some investigation, <a href="/percy/">I decided to write my own</a>, primarily to avoid what I considered fundamental design flaws in existing solutions.  Although built in and for Nim, initially, Percy <em>may</em> become a more generic package manager.
                 </p>
             </section>
             <x class:="my-4">
+                <section class="text-center">
+                    <p>
+                        Below you can find an overview of some of the features and a preview into how it looks to develop in Mininim's web modules.
+                    </p>
+                </section>
                 <section>
                     <h2>Pages Middleware</h2>
                     <x:code:sample>
@@ -98,7 +103,7 @@
                     <h3>Component Scope</h3>
                     <x:code:sample>
                         <p>
-                            Components have an isolated scope.  This means that whenever you call a component from another template, the only variables available within that component are those that are passed by attributes to the component.  For example, the <code>name</code> variable is not directly available in the component or to the children, but the <code>title</code> variable will be.
+                            Components have an isolated scope.  This means that whenever you call a component from another template, the only variables available within that component are those that are passed by attributes to the component.  However, any children passed into the component are rendered in the calling scope.  For example, the <code>name</code> variable is not directly available in the component itself but the children being passed in can use it.  Conversely, the <code>title</code> variable will be available in the component, but not to the children.
                         </p>
                         <x:code :esc type="twig">
                             <set name="Bob" />
@@ -110,25 +115,38 @@
                         </x:code>
                     </x:code:sample>
                     <x:code:sample>
-                        <p>
-                            You can, however, access external scope via the <code>context</code> object or by passing the requisite data in as an attribute.
-                        </p>
-                        <x:code :esc type="twig">
-                            <set name="Bob" />
-                            <x:main title="The Spy Who Awked Me">
-                                <h1>
-                                    Hello {{ context.name ? "World" }}!
-                                </h1>
-                            </x:main>
-                        </x:code>
-                        <x:code :esc type="twig">
-                            <set name="Bob" />
-                            <x:main title="The Spy Who Awked Me" name:val="name">
-                                <h1>
-                                    Hello {{ name ? "World" }}!
-                                </h1>
-                            </x:main>
-                        </x:code>
+                        <div class="flex flex-col @lg:items-end">
+                            <p>
+                                You can, however, access external scope via the <code>context</code> inside the template or by passing the requisite data in as an attribute with the <code>:val</code> filter, as seen  in the example below.
+                            </p>
+                            <x:code :esc type="twig">
+                                <set name="Bob" />
+                                <x:main title="The Spy Who Awked Me" name:val="name">
+                                    <h1>
+                                        Hello {{ name ? "World" }}!
+                                    </h1>
+                                </x:main>
+                            </x:code>
+                        </div>
+                        <div class="order-first">
+                            <p>
+                                File: <code>resources/tags/main.html</code>
+                            </p>
+                            <x:code :esc type="twig">
+                                <try>
+                                    <do if:val="children">
+                                        <raw>
+                                            {{ children }}
+                                        </raw>
+                                    </do>
+                                    <do>
+                                        <h1>
+                                            Hello {{ context.name ? "World" }}!
+                                        </h1>
+                                    </do>
+                                </try>
+                            </x:code>
+                        </div>
                     </x:code:sample>
                 </section>
                 <section>

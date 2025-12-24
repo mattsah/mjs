@@ -62,49 +62,60 @@
     --tw-leading: 2em;
 }
 
-@layer base {
-    :root {
-        font-size: clamp(14px, 1dvw, 18px);
-        --spacing: clamp(0.125rem, 0.5dvw,0.5rem);
+@custom-variant lg {
+    @media print, screen and (width >= theme(--breakpoint-lg)) {
+        @slot;
     }
+}
 
+@custom-variant xl {
+    @media print, screen and (width >= theme(--breakpoint-xl)) {
+        @slot;
+    }
+}
+
+
+@layer base {
+    html:not(.custom) {
+        :root {
+            font-size: clamp(14px, 1dvw, 18px);
+            --spacing: clamp(0.125rem, 0.5dvw,0.5rem);
+        }
+
+        @apply bg-main text-fore leading-loose font-mono text-sm;
+
+        h1, h2, h3, h4, h5, h6 {
+            @apply font-serif leading-tight;
+        }
+
+        h1 {
+            @apply text-center text-6xl @xl:text-9xl mb-4;
+        }
+
+        h2 {
+            @apply text-5xl @xl:text-8xl mb-4;
+        }
+
+        h3 {
+            @apply text-4xl @xl:text-7xl mb-4;
+        }
+
+        h4 {
+            @apply text-3xl @xl:text-6xl mb-4;
+        }
+
+        h5 {
+            @apply text-2xl @xl:text-5xl mb-4;
+        }
+
+        h6 {
+            @apply text-xl @xl:text-4xl mb-4;
+        }
+    }
 
     html {
-        @apply bg-main text-fore leading-loose font-mono text-sm;
+        @apply not-print:h-full @container;
     }
-
-    body {
-        @apply @container;
-    }
-
-    h1, h2, h3, h4, h5, h6 {
-        @apply font-serif leading-tight;
-    }
-
-    h1 {
-        @apply text-center text-6xl @xl:text-9xl mb-4;
-    }
-
-    h2 {
-        @apply text-5xl @xl:text-8xl mb-4;
-    }
-
-    h3 {
-        @apply text-4xl @xl:text-7xl mb-4;
-    }
-
-    h4 {
-        @apply text-3xl @xl:text-6xl mb-4;
-    }
-
-    h5 {
-        @apply text-2xl @xl:text-5xl mb-4;
-    }
-
-    h6 {
-        @apply text-xl @xl:text-4xl mb-4;
-    }
-
 
     ul:not([class]) {
         @apply list-disc list-outside my-2 ml-6 italic text-fore/80;
@@ -133,14 +144,61 @@
     }
 
     .contain {
-        @apply px-8 @lg:px-16 @2xl:px-24 @3xl:px-[calc((100%-var(--container-2xl))/2)];
+        @apply px-8 @lg:px-16 @2xl:px-[calc((100%-var(--container-xl))/2)] @3xl:px-[calc((100%-var(--container-2xl))/2)] print:px-0! print:left-0!;
 
-        > section {
-            @apply py-8;
+        > section, header, footer {
+            @apply py-8 print:py-0!;
         }
     }
 
     .intro {
-        @apply md:columns-2 gap-8;
+        @apply xl:columns-2 gap-8;
+    }
+
+    html.resume {
+        i {
+            @apply text-slate-700;
+        }
+
+        a {
+            @apply text-stone-600 underline;
+        }
+
+        section {
+            @apply mb-0;
+        }
+
+        p:not(:last-child) {
+            @apply mb-4;
+        }
+
+        .block {
+            @apply mb-2;
+        }
+
+        .location {
+            @apply inline before:content-['('] after:content-[')'];
+        }
+
+        .scope {
+            @apply inline before:mb-0 before:inline after:block before:content-['{'] after:content-['}'];
+        }
+
+        .array {
+            @apply relative after:content-['['] after:absolute after:left-full;
+        }
+
+        .array + dd {
+            @apply block mb-0 after:content-[']'];
+        }
+
+        progress {
+            @apply overflow-hidden rounded-lg h-2 w-full;
+        }
+
+        ::-webkit-progress-bar,
+        ::-moz-progress-bar {
+            @apply bg-teal-800;
+        }
     }
 }

@@ -1,0 +1,32 @@
+<x:main>
+    <section>
+        <h1>Percy</h1>
+        <section class="prose">
+            <section class="intro">
+                <p>
+                    <a href="https://github.com/mattsah/percy">Percy</a> is a package manager built by and for Nim, although it aspires to provide more generalized package management long term.  It's based on the fundamental principle that your Version Control Repository is king.  It is <em>the</em> source of your available package versions, as well as any particular versions requirements (via whatever file tracks requirements) at that commit.  Nim already has two much more "official" package managers, <a href="https://github.com/nim-lang/atlas">Atlas</a> and <a href="https://github.com/nim-lang/nimble">Nimble</a>, as well as a handful of others.
+                </p>
+                <p>
+                    The decision to write my own was not taken lightly, but existing solutions showed a handful of problems.  More specifically:
+                </p>
+                <ul>
+                    <li>
+                        Both Atlas and Nimble fail to track repository or branch HEADs consistently when updating.  The reasons each fail are their own.  <a href="https://github.com/treeform/nimby">Nimby</a>, another alternative, <strong>only</strong> tracks head, so becomes incapable as soon as projects stabilize and actual version constraints become more important.
+                    </li>
+                    <li>
+                        No solutions provide hybrid per-project working copies combined with central dependency caching.  They either use a central cache, which causes significant caching and resolution issues, or fully local per-project working copies which means working on shared library or framerwork dependencies has higher management overhead.
+                    </li>
+                    <li>
+                        No solutions provide easy to manage per-project package repository sourcing.  Nimble enables you to add additoinal package lists, but it is global to any use of nimble.  Atlas allows per-package overrides, but management is tedious.
+                    </li>
+                </ul>
+                <p>
+                    Enter Percy, short for Perseus, <em>the Greek hero that turned Atlas into stone</em>.
+                </p>
+            </section>
+            <x class:="my-4">
+
+            </x>
+        </section>
+    </section>
+</x:main>

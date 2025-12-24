@@ -10,8 +10,12 @@
 --path:"local"
 
 # <percy>
+--noNimblePath
+import
+    std/strutils
 when withDir(thisDir(), system.fileExists("vendor/percy.paths")):
-    include "vendor/percy.paths"
+    for path in readFile("vendor/percy.paths").split("\n"):
+        switch("path", path)
 # </percy>
 
 # <percy>
