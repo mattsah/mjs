@@ -79,7 +79,7 @@
     html:not(.custom) {
         :root {
             font-size: clamp(14px, 1dvw, 18px);
-            --spacing: clamp(0.125rem, 0.5dvw,0.5rem);
+            --spacing: clamp(0.125rem, 0.5dvw, 0.5rem);
         }
 
         @apply bg-main text-fore leading-loose font-mono text-sm;
