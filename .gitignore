@@ -4,6 +4,5 @@ nimble.paths
 nimble.lock
 nimble.develop
 nimbledeps
-percy.lock
 vendor
 .env
