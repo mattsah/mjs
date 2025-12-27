@@ -3,4 +3,5 @@
 import
     mininim/web,
     mininim/mdlw/pages,
-    mininim/mdlw/public404
+    mininim/mdlw/public404,
+    mininim/mdlw/statuspages

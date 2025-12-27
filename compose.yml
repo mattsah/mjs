@@ -2,9 +2,9 @@ services:
   caddy:
     build:
         context: .
-        dockerfile: Dev.Dockerfile
+        dockerfile: docker/dev.Dockerfile
     restart: unless-stopped
-    command: ["sh", "/srv/start.sh"]
+    command: ["sh", "/srv/docker/start.sh"]
     ports:
       - "31337:80"
     volumes:
