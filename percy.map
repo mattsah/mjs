@@ -79,7 +79,49 @@
     ]
   },
   "local/plugin/mininim/web.nim": {
-    "hash": "226CBF1D1206EAF39EB800E032A2098224848EB9",
+    "hash": "16CC070B47EF32236B22C8A046E6A5F04DF7BF82",
+    "subs": [
+      "e56093e3fbc44780fb4506fe40cd1ec24a414a4f"
+    ]
+  },
+  "config": {
+    "hash": "",
+    "subs": [
+      "e56093e3fbc44780fb4506fe40cd1ec24a414a4f"
+    ]
+  },
+  "docker": {
+    "hash": "",
+    "subs": [
+      "e56093e3fbc44780fb4506fe40cd1ec24a414a4f"
+    ]
+  },
+  "docker/Dockerfile": {
+    "hash": "4E1242B567122C315B14937A8DAB3007B7E789BC",
+    "subs": [
+      "e56093e3fbc44780fb4506fe40cd1ec24a414a4f"
+    ]
+  },
+  "docker/start.sh": {
+    "hash": "74C8D037C94774A6D8796E64862FE32AAC80BB56",
+    "subs": [
+      "e56093e3fbc44780fb4506fe40cd1ec24a414a4f"
+    ]
+  },
+  "docker/dev.Dockerfile": {
+    "hash": "3A0DC490124B3372ECE312267CFF76410F4FC3FB",
+    "subs": [
+      "e56093e3fbc44780fb4506fe40cd1ec24a414a4f"
+    ]
+  },
+  "config/.gitkeep": {
+    "hash": "DA39A3EE5E6B4B0D3255BFEF95601890AFD80709",
+    "subs": [
+      "e56093e3fbc44780fb4506fe40cd1ec24a414a4f"
+    ]
+  },
+  "config/caddyfile": {
+    "hash": "F75296F1A6AF92144841A948A0894AEA9584ACEE",
     "subs": [
       "e56093e3fbc44780fb4506fe40cd1ec24a414a4f"
     ]
