@@ -1,6 +1,6 @@
 {
   "meta": {
-      "map": "mininim"
+    "map": "mininim"
   },
   "sources": {
     "nim-lang": "gh://nim-lang/packages",
