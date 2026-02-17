@@ -9,6 +9,7 @@
 
 author = "Matthew J. Sahagian"
 binDir = "bin"
+bin = "app"
 
 requires "nim >= 2.2.6"
 requires "dotenv >= 2.0.0"

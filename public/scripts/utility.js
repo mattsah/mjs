@@ -51,18 +51,20 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-const query = new URLSearchParams(window.location.search);
+document.addEventListener('DOMContentLoaded', function () {
+    const query = new URLSearchParams(window.location.search);
 
-if (query.has('unlock')) {
-    const secret = query.get('unlock');
-    const locked = document.querySelectorAll('[data-lock]').forEach(
-        (item) =>> {
-            var parts = item.attributes['href'].value.split(':');
-            var value = CryptoJS.RC4.decrypt(parts[1], secret).toString(CryptoJS.enc.Utf8);
+    if (query.has('unlock')) {
+        const secret = query.get('unlock');
+        const locked = document.querySelectorAll('[data-lock]').forEach(
+            (item) => {
+                var parts = item.attributes['href'].value.split(':');
+                var value = CryptoJS.RC4.decrypt(parts[1], secret).toString(CryptoJS.enc.Utf8);
 
-            item.innerText = value;
-            item.setAttribute('href', parts[0] + ':' + value);
-            item.classList.toggle('blur-sm')
-        }
-    );
-}
+                item.innerText = value;
+                item.setAttribute('href', parts[0] + ':' + value);
+                item.classList.toggle('blur-sm')
+            }
+        );
+    }
+});

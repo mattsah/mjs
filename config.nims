@@ -35,7 +35,7 @@ import
 
 proc build(args: seq[string]): void =
     var
-        cfg = parseJson("{\"namedbin\":{},\"srcDir\":\".\",\"binDir\":\".\"}")
+        cfg = parseJson("{\"namedBin\":{},\"srcDir\":\".\",\"binDir\":\".\"}")
     when defined(windows):
         let
             (info, error) = gorgeEx("percy info -j 2>NUL")
