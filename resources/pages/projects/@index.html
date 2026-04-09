@@ -1,0 +1,23 @@
+<x:main>
+    <set projects:data="projects" />
+    <header>
+        <h1 class="text-center">A Selection of What I Do</h1>
+    </header>
+    <section aria-label="Featured Projects">
+        <for key="id" val="project" in:val="projects.filter(`val.highlight ? false`)">
+            <x:project:card
+                model:val="project"
+                target="/projects/{{ id }}"
+                class:="w-full"
+            />
+        </for>
+    </section>
+    <section class="grid @md:grid-cols-2 gap-8" aria-label="Other Projects">
+        <for key="id" val="project" in:val="projects.filter(`not val.highlight ? false`)">
+            <x:project:card
+                model:val="project"
+                target="/projects/{{ id }}"
+            />
+        </for>
+    </section>
+</x:main>

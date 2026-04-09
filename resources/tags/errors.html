@@ -1,0 +1,10 @@
+<set messages:val="context.errors.{{ path }} ? ()" />
+<try>
+    <do if:val="messages.len > 0">
+        <ul class="relative -mt-3 mb-3 text-xs text-red-400">
+            <for val="message" in:val="messages">
+                <li>{{ message }}</li>
+            </for>
+        </ul>
+    </do>
+</try>

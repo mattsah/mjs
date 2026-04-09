@@ -1,0 +1,65 @@
+<x:main>
+    <set project:data="projects/{{ request.pathParams.id }}" />
+    <header>
+        <hgroup>
+            <h1>
+                {{ project.title }}
+            </h1>
+            <h2 class="text-coral text-xl -mt-2 ml-[10%]">
+                {{ project.items.Stakeholder }}
+            </h2>
+        </hgroup>
+        <section class="text-center" aria-label="Technologies">
+            <x:base:pills data:val="project.items.Technology" />
+        </section>
+        <do if:val="(project.links ? []).len">
+            <section class="flex justify-center gap-8 mt-8" aria-label="Links">
+                <for key="name" val="url" in:val="project.links">
+                    <x class:="inline-block bg-water/25 hover:bg-water/50 border border-water py-1 px-4 rounded-full">
+                        <try>
+                            <do if:val="url.begins('download:')">
+                                <a href="{{ url.slice('download:'.len) }}" hx-boost="false" download>{{ name }}</a>
+                            </do>
+                            <do>
+                                <a href="{{ url }}">{{ name }}</a>
+                            </do>
+                        </try>
+
+                    </x>
+                </for>
+            </section>
+        </do>
+    </header>
+    <section class="grid @xl:grid-cols-3 gap-8">
+        <section class="@xl:col-span-2" aria-label="Introduction">
+            <h2 class="text-3xl text-olive">Introduction</h2>
+            <markdown>
+                {{ project.introduction ? 'Nothing Here Yet' }}
+            </markdown>
+        </section>
+        <do if:val="(project.responsibilities ? []).len">
+            <section aria-label="Role">
+                <h2 class="text-3xl text-olive">My Role</h2>
+                <ul class="default ml-2!">
+                    <for val="responsibility" in:val="project.responsibilities">
+                        <li class="marker:text-blush">
+                            <markdown>
+                                {{ responsibility }}
+                            </markdown>
+                        </li>
+                    </for>
+                </ul>
+            </section>
+        </do>
+    </section>
+    <do if:val="(project.sections ? []).len">
+        <section class="grid @xl:grid-cols-2 gap-8">
+            <for val="section" in:val="project.sections">
+                <section>
+                    <h3 class="text-2xl">{{ section.title }}</h3>
+                    <x:project:section type:val="section.type" data:val="section.data" />
+                </section>
+            </for>
+        </section>
+    </do>
+</x:main>

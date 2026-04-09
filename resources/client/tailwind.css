@@ -3,6 +3,8 @@
  */
 @import "tailwindcss" source("..");
 
+@source inline("order-{1..32}");
+
 @theme {
     /**
      * Reset
@@ -36,8 +38,11 @@
     --text-4xl: 2.00rem;
     --text-3xl: 1.75rem;
     --text-2xl: 1.50rem;
-    --text-1xl: var(--text-xl)
-    --text-1xs: var(--text-xs)
+    --text-1xl: var(--text-xl);
+    --text-lg: 1.125rem;
+    --text-base: 1.00rem;
+    --text-sm: .875rem;
+    --text-1xs: var(--text-xs);
     --text-2xs: 0.50rem;
     --text-3xs: 0.25rem;
 
@@ -45,18 +50,18 @@
      * Custom
      */
 
-    --font-serif: "Fraunces", serif;
-    --font-sans: "Source Sans 3", sans-serif;
+    --font-serif: "Newsreader", serif;
+    --font-sans: "Inter", sans-serif;
     --font-mono: "Source Code Pro", monospace;
 
     --color-blush: rgb(255, 166, 115);
     --color-olive: rgb(198, 222, 65);
     --color-coral: rgb(255, 142, 161);
     --color-water: rgb(45, 110, 126);
-    --color-storm: rgb(21, 59, 68);
-    --color-night: rgb(7, 28, 33);
+    --color-storm: oklch(0.3423 0.0391 229.99);
+    --color-night: oklch(0.1985 0.0144 229.99);
 
-    --color-fore: var(--color-slate-200);
+    --color-fore: var(--color-zinc-300);
     --color-main: var(--color-night);
 
     --tw-leading: 2em;
@@ -76,57 +81,73 @@
 
 
 @layer base {
-    html:not(.custom) {
-        :root {
-            font-size: clamp(14px, 1dvw, 18px);
-            --spacing: clamp(0.125rem, 0.5dvw, 0.5rem);
-        }
-
-        @apply bg-main text-fore leading-loose font-mono text-sm;
-
-        h1, h2, h3, h4, h5, h6 {
-            @apply font-serif leading-tight;
-        }
-
-        h1 {
-            @apply text-center text-6xl @xl:text-9xl mb-4;
-        }
-
-        h2 {
-            @apply text-5xl @xl:text-8xl mb-4;
-        }
-
-        h3 {
-            @apply text-4xl @xl:text-7xl mb-4;
-        }
-
-        h4 {
-            @apply text-3xl @xl:text-6xl mb-4;
-        }
-
-        h5 {
-            @apply text-2xl @xl:text-5xl mb-4;
-        }
-
-        h6 {
-            @apply text-xl @xl:text-4xl mb-4;
-        }
+  :root {
+        font-size: clamp(16px, 1.125dvw, 20px);
+        --spacing: clamp(0.250rem, .375rem, 0.500rem);
     }
 
     html {
-        @apply not-print:h-full @container;
+        @apply print:bg-white print:text-main bg-main text-fore leading-loose font-sans @container not-print:h-full;
     }
 
-    ul:not([class]) {
-        @apply list-disc list-outside my-2 ml-6 italic text-fore/80;
+    h1, h2, h3, h4, h5, h6 {
+        @apply font-serif leading-tight;
     }
 
-    a[href] {
-        @apply underline text-blush;
+    h1 {
+        @apply text-8xl italic text-center;
     }
 
-    p {
+    h2 {
+        @apply text-4xl @xl:text-7xl;
+    }
+
+    h3 {
+        @apply text-3xl @xl:text-6xl;
+    }
+
+    h4 {
+        @apply text-2xl @xl:text-5xl;
+    }
+
+    h5 {
+        @apply text-xl @xl:text-4xl;
+    }
+
+    h6 {
+        @apply text-lg @xl:text-3xl;
+    }
+
+    hgroup {
+        @apply mb-4 text-center;
+    }
+
+    :not(hgroup) {
+        & > h1:not(:last-child),
+        & > h2:not(:last-child),
+        & > h3:not(:last-child),
+        & > h4:not(:last-child),
+        & > h5:not(:last-child),
+        & > h6:not(:last-child) {
+            @apply mb-4;
+        }
+    }
+
+    a[href]:not([class]),
+    a[href].default {
+        @apply underline text-olive/80;
+    }
+
+    p:not(:last-child) {
         @apply mb-4;
+    }
+
+    em {
+        @apply text-blush;
+    }
+
+    img, svg {
+        @apply w-full h-auto;
     }
 
     code {
@@ -143,62 +164,39 @@
         }
     }
 
+    ul:not([class]),
+    ul.default {
+        @apply list-disc list-outside not-only:mt-2 not-last:mb-2 ml-[1.5ch] italic text-fore/80;
+    }
+
     .contain {
-        @apply px-8 @lg:px-16 @2xl:px-[calc((100%-var(--container-xl))/2)] @3xl:px-[calc((100%-var(--container-2xl))/2)] print:px-0! print:left-0!;
-
-        > section, header, footer {
-            @apply py-8 print:py-0!;
-        }
+        @apply px-4 @lg:px-24 @2xl:px-[calc((100%-var(--container-xl))/2)] print:px-0! print:left-0!;
     }
+}
 
-    .intro {
-        @apply xl:columns-2 gap-8;
-    }
 
-    html.resume {
-        i {
-            @apply text-slate-700;
-        }
+@utility shape-* {
+  float: var(--tw-shape-reverse, left);
+  shape-outside: --value([*]);
+}
 
-        a {
-            @apply text-stone-600 underline;
-        }
+@utility shape-circle-* {
+  float: var(--tw-shape-reverse, left);
+  shape-outside: circle(--spacing(--value(integer)));
+  shape-outside: circle(calc(100% * --value(ratio)));
+  shape-outside: circle(--value(--spacing-*, --shape-circle-*, [length], [percentage]));
+}
 
-        section {
-            @apply mb-0;
-        }
+@utility shape-reverse {
+  --tw-shape-reverse: right;
+}
 
-        p:not(:last-child) {
-            @apply mb-4;
-        }
+@utility shape-margin-* {
+  shape-margin: --spacing(--value(integer));
+  shape-margin: --value(--spacing-*, --margin-*, [length], [percentage]);
+}
 
-        .block {
-            @apply mb-2;
-        }
 
-        .location {
-            @apply inline before:content-['('] after:content-[')'];
-        }
-
-        .scope {
-            @apply inline before:mb-0 before:inline after:block before:content-['{'] after:content-['}'];
-        }
-
-        .array {
-            @apply relative after:content-['['] after:absolute after:left-full;
-        }
-
-        .array + dd {
-            @apply block mb-0 after:content-[']'];
-        }
-
-        progress {
-            @apply overflow-hidden rounded-lg h-2 w-full;
-        }
-
-        ::-webkit-progress-bar,
-        ::-moz-progress-bar {
-            @apply bg-teal-800;
-        }
-    }
+@utility text-justify-* {
+    text-justify: --value([*])
 }

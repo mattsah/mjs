@@ -1,0 +1,30 @@
+title: Data Stack
+tagline: Turn-key data pipelines for non-data engineers.
+description: Proof-of-Concept end-to-end data pipeline, warehousing, and analytics solution aimed at providing turn-key deployment.
+highlight: false
+
+introduction: |
+  Data Stack was developed as a cross-team proposal and proof-of-concept towards the end of my tenure at Jobs For the Future (JFF).  It was designed to meet growing data requirements both within JFF and among various organizations we worked with in the field.
+
+  The vast majority of non-profit organizations centered in the workforce and education space have limited technical know how.  By combining open source tools and modern deployment ecosystems like Docker, Data Stack aimed to provide a turn-key solution for data pipelines which could be installed and maintained by a small and inexperienced IT team.  Selection of components focused on the ability to integrate them behind the scenes, as well as the flexibility of their own features and APIs for enabling modular deployment of new data workflows designed or developed by JFF or other third parties.
+
+links:
+  Proposal: download:/assets/projects/datastack/datastack.pptx
+  Archived Proof-of-Concept (GitHub): https://github.com/mattsah/datastack
+
+items:
+  Stakeholder: Jobs For the Future
+  Technology:
+    - Docker
+    - BASH
+    - Baserow
+    - Python
+    - Matatika
+    - DBT
+    - PostgreSQL
+    - Apache Superset
+
+responsibilities:
+  - Initial proposal and founding of project innovation team.
+  - Collection and synthesis of stakeholder requirements and feedback.
+  - Development of initial proof-of-concept and deployment of reference systems internally.

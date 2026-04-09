@@ -9,10 +9,14 @@
 
 author = "Matthew J. Sahagian"
 binDir = "bin"
-bin = "app"
+bin = @[
+  "app"
+]
 
 requires "nim >= 2.2.6"
 requires "dotenv >= 2.0.0"
 requires "mininim/core"
 requires "mininim/cli"
 requires "mininim/web"
+requires "smtp"
+requires "valido"

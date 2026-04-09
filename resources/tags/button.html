@@ -1,5 +1,18 @@
-<button class="px-4 py-1 rounded-md bg-white/8 text-coral cursor-pointer">
-    <raw>
-        {{ children ? text }}
-    </raw>
-</button>
+<set class="inline-block px-4 py-2 cursor-pointer font-medium whitespace-nowrap" />
+
+<try>
+    <do if:val="url ? null">
+        <a class="{{ class }}" href="{{ url }}">
+            <raw>
+                {{ children ? text }}
+            </raw>
+        </a>
+    </do>
+    <do>
+        <button type:val="(type ? 'button')" class="{{ class }}">
+            <raw>
+                {{ children ? text }}
+            </raw>
+        </button>
+    </do>
+</try>

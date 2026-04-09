@@ -1,0 +1,8 @@
+<dl class="flex flex-col p-8 gap-6 justify-center">
+    <set pos:val="1" />
+    <for key="term" val="desc" in:val="data">
+        <dt class="-mt-7 text-fore uppercase text-xs order-{{ pos + 1 }}">{{ term }}</dt>
+        <dd class="font-serif font-bold text-4xl order-{{ pos }}">{{ desc }}</dd>
+        <set pos:val="pos + 2"
+    </for>
+</dl>

@@ -1,0 +1,33 @@
+title: Mininim
+tagline: Experimental application and web framework.
+description: Experimental OOP web and cli application framework for the Nim programming language and its supporting package manager.
+highlight: false
+
+introduction: |
+  Mininim is a highly experimental application and web framework for Nim.  Its primary goal is to improve modularity and speed of development by taking inspiration from modern back-end frameworks in other languages.  Unlike most of the Nim web space, Mininim does not rely on Nim's JavaScript compilation, and is, instead, focused on creating robust server-side features with the performance and type security of Nim and the ease of use and deployment of something like PHP.
+
+  Experimental features include:
+  - OOP-friendly macros and templates to reduce visual code overhead
+  - Baseline standard libraries covering common needs
+  - Unified IoC container and configurable dependency injection
+  - Pluggable CLI commands, HTTP routes and middleware
+  - No-build templating with a flexible component model
+
+links:
+  GitHub: https://github.com/mattsah/mininim
+
+items:
+  Stakeholder: Personal
+  Technology:
+    - Nim
+    - Git
+    - Docker
+    - HTML
+    - TOML
+    - YAML
+    - Markdown
+
+responsibilities:
+  - Core concepts and initial meta-framework implementation
+  - Official module development and ecosystem integration
+  - Maintenance of supporting tools, such as <a href="#percy">Percy</a>

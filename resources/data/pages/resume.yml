@@ -1,0 +1,102 @@
+experience:
+  - title: Primd Cooperative
+    dates: <time>Apr 2025</time> - Present
+    titles:
+      - Technical Architect
+      - Founder
+    locations:
+      - Remote
+      - San Jose, CA
+    skills:
+      - Linux
+      - Debian
+      - LDAP
+      - OAuth
+      - Docker
+      - Caddy
+      - HTMX
+      - AlpineJS
+      - Tailwind
+      - PHP
+      - Nim
+      - Memgraph
+      - Redis
+      - PostgreSQL
+      - Kafka
+    notes:
+      - |
+        Architected and led implementation for mobile Progressive Web Application (PWA), supporting an asynchronous event-driven data layer and providing no-build component-based UI development.
+      - |
+        Investigated, deployed, integrated and supported open source tools to build a cost-effective and privacy-oriented collaborative infrastructure, including shared documents, video conferencing, and centralized identity provider with SSO across all tools.
+      - |
+        Established four-person founding team and operating guidelines in accordance with cooperative principles.
+
+  - title: Jobs For the Future
+    dates: <time>Aug 2023</time> - <time>Apr 2025</time>
+    titles:
+      - Technical Solution Architect
+      - Director II
+    locations:
+      - Remote
+    skills:
+      - EC2
+      - S3
+      - API Gateway
+      - Terraform
+      - Cloudflare
+      - React
+      - Vite
+      - PHP
+      - Meltano
+      - DBT
+      - Python
+      - PostgreSQL
+      - REST
+      - n8n
+      - MongoDB
+      - Entra ID
+      - Cognito
+    notes:
+      - |
+        Delivered rapid application prototypes for data-oriented workforce, education, and climate focused tools, meeting or exceeding 6-week (or less) delivery times.
+      - |
+        Led technical implementation team for Job Corps' (US Department of Labor) nation-wide career planning platform: MyPACE, serving 150,000+ students — automating compliance reporting, optimizing feature pages for >80% reduction in wait times, creating proof-of-concept RAG-based AI support systems.
+      - |
+        Supported multiple external teams, executing on IT consolidation efforts for consecutive monthly reductions in cost and developing turn-key data systems for an internal Research and Analytics initiative, beating projected budget by ~75%.
+
+  - title: Imarc
+    dates: <time>2009</time>; <time>Aug 2011</time> - <time>Aug 2023</time>
+    titles:
+      - Lead Web Engineer
+    locations:
+      - Remote
+      - Santa Cruz, CA
+      - Newburyport, MA
+    skills:
+      - Linux
+      - Ubuntu
+      - BASH
+      - Git
+      - EC2
+      - Autoscaling
+      - Apache
+      - NGINX
+      - MySQL
+      - PostgreSQL
+      - PHP
+      - Symfony
+      - Doctrine
+      - JavaScript
+      - Webpack
+      - HTML
+      - CSS
+      - Sass
+    notes:
+      - |
+        Proposed and led the development of a consolidated product platform, Fuse, to serve disparate client CPA societies, creating annual sustainable revenue model and reducing client onboarding from ~6 months to ~6 weeks.
+      - |
+        Co-led developer operations and internal/client server infrastructure, creating comprehensive scripts for automation and deployments that met flexibility requirements of diverse client needs.
+      - |
+        Developed and maintained dozens of client websites and web-based applications including: SSH and Tuft's SPEC Database.
+      - |
+        Executed on-site contract work for Motorola, maintaining developer systems for early non-US app store alternative to Google Play and managed the infrastructure and systems shutdown following Google's purchase of Motorola.

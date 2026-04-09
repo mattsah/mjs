@@ -1,0 +1,33 @@
+title: Fuse
+tagline: A unified CMS and e-commerce platform for CPA societies.
+description: A unified content management and e-commerce platform providing modular features and customizability for CPA Society membership portals.
+
+introduction: |
+  Fuse is a web-based platform designed to provide CPA membership societies with a relatively turn-key CMS and e-commerce solution that integrates seemlessly with the proprietary AM.Net CRM solution.  I originally conceived of and pitched the idea to Imarc leadership after having worked for several years developing and maintaining disparate code-bases across multiple state societies.  The objectives were straightforward:
+
+  - Provide a feature-flagged and highly customizable platform to serve any and all CPA clients to reduce maintenance overhead.
+  - Create alternative recurring revenue stream while still capitalizing on per-client customization.
+  - Enable significant reduction in intial client onboarding times (months to weeks).
+
+links:
+  Example Deployment (OSCPA): https://www.oscpa.com/
+  Article About Fuse: https://www.imarc.com/blog/fuse-imarcs-cpa-membership-platform
+
+items:
+  Stakeholder: Imarc
+  Technology:
+    - PHP
+    - Symfony
+    - Doctrine
+    - Memcached
+    - JavaScript
+    - Webpack
+    - PostgreSQL
+    - SQL Server
+    - AM.Net
+    - PayPal
+
+responsibilities:
+  - Original proposal, conceptual development and framework design and architecture.
+  - Led front-end and back-end implementation from conception to maturity.
+  - Client technical onboarding and feature requirement design and development.

@@ -1,0 +1,15 @@
+<x:main>
+    <set id:val="request.pathParams.id" />
+    <set articles:data="articles/index" content:data="articles/content/{{ id }}" />
+
+    <res code="404" if:val="not articles.has(id)" />
+
+    <section>
+        <article class="max-w-[1024px] m-auto">
+            <h1>{{ articles[id].title }}</h1>
+            <markdown>
+                {{ content }}
+            </markdown>
+        </article>
+    </section>
+</x:main>

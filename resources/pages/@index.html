@@ -1,20 +1,61 @@
 <x:main>
-    <section>
-        <h1 class="md:-ml-[10dvw]">
-            Hello, my name is
-            <br />
-            <span class="text-olive md:inline-block md:indent-[10dvw]">Matthew Sahagian</span>
-        </h1>
-        <section class="prose intro">
-            <p>
-                I am a <em>mostly</em> self-taught software engineer and technical architect seeking full-time opportunities in product/internal tool(s) development, data-engineering, or systems design.  In the interim, I founded <a href="https://primd.app">Primd</a>, a cooperative startup that aims to develop novel tools to connect workers, employers, and educators and increase shared opportunities via a skills-first approach.
-            </p>
-            <p>
-                Prior to Primd, I lead solution design and implementation for a small product incubation team embedded in <a href="https://www.jff.org/work/jff-labs/">JFF (Jobs for the Future) Labs</a>.  In addition to my primary responsibilities which included rapid proto-typing and technical architecture, I engaged in efforts to improve data integration and accessibility across JFF's entire organization.  With over 15 years of professional programming experience, much of that spent working in an <a href="https://www.imarc.com">agency environment</a> as a web engineer, I've worked on everything from custom content management systems to the nationwide career planning platform that supported the US Department of Labor's Job Corps program for over half a decade.
-            </p>
-            <p>
-                I am a strong proponent of open source software and have been using GNU/Linux in one capacity or another since the age of 12.  My favorite programming language is <a href="https://nim-lang.org/">Nim</a>, although much of my career has been working with <a href="https://www.php.net/">PHP</a>, JavaScript, and other web-technologies.  All <a href="https://github.com/mattsah/mjs">code for this site</a> is a highly experimental Nim implementation of patterns I originally developed for <a href="https://hiraeth.dev">Hiraeth</a>.  If you're curious about that sort of thing, you can <a href="/mininim/">take a closer look</a>.
-            </p>
+    <set page:data="pages/index" />
+    <header>
+        <hgroup>
+            <h1>
+                Hello, my name is <span class="text-olive font-semibold">Matthew Sahagian</span>.
+            </h1>
+            <h2>
+                I solve technical problems.
+            </h2>
+        </hgroup>
+        <section class="flex flex-col @xl:flex-row! @xl:items-center gap-8" aria-label="Introduction">
+            <div class="align-text-top">
+                <markdown>
+                    {{ page.intro }}
+                </markdown>
+            </div>
+            <div class="flex justify-center @xl:justify-start items-start gap-4">
+                <x:button:main url="https://github.com/mattsah">
+                    View GitHub <x:icon class:="ml-2" name="move-right" />
+                </x:button:main>
+                <x:button class:="bg-zinc-800 text-fore!" url="/resume?print=true">
+                    Print Resume <x:icon class:="ml-2" name="printer" />
+                </x:button>
+            </div>
+        </section>
+    </header>
+    <section class="grid @md:grid-cols-3 gap-8">
+        <x:list:stats class:="@md:col-span-1 bg-olive/5 text-olive w-full" data:val="(
+            'Technical Experience': '20+ Years',
+            'Open Source Repositories': '80+'
+        )" />
+        <section class="@md:col-span-2" aria-label="My Projects">
+            <markdown>
+                {{ page.about }}
+            </markdown>
+            <x:button:ghost class:="float-right" url="/about">
+                Learn More About Me
+            </x:button:ghost>
+        </section>
+    </section>
+    <section class="grid @md:grid-cols-12 gap-8 bg-black/20">
+        <section class="@lg:col-span-7">
+            <set projects:data="projects" />
+            <h2 class="text-2xl">Projects</h2>
+            <ul>
+                <for key="id" val="project" in:val="projects.slice(0, 4)">
+                    <li>
+                        <a class="block" href="/projects/{{ id }}">
+                            <span class="text-coral">{{ project.title }}</span>: {{ project.tagline ? '' }}
+                        </a>
+                    </li>
+                </for>
+            </ul>
+        </section>
+        <section class="@lg:col-span-5 bg-black/20 p-4 -mt-4 -mb-4">
+            <h2 class="text-2xl">Contact</h2>
+            <x:form:contact />
         </section>
     </section>
 </x:main>

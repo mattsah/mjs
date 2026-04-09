@@ -1,0 +1,30 @@
+title: EQOS
+tagline: Measure, explore and integrated credential quality data.
+description: API and Web Application for exploring data within the Education Quality Outcome Standards framework.
+highlight: false
+
+introduction: |
+  Education Quality Outcome Standards was established as a data framework for measuring and gauging the quality of non-degree credentials via outcomes.  After its purchase by Jobs For the Future (JFF), and in partnership with Burning Glass Institute (BGI), the strategy shifted from a mere framework to operationalizing the data.  Early product development concepts included an API designed for integration into HR, education, and/or research systems as well as a public data exploration app for workers and students.
+
+  I was hired with JFF, in part, to design and build these (and other) early product prototypes.  Working in close collaboration with data scientists at BGI and a small UX design and development team within JFF, implementation saw early and rapid success.  Despite this, the project was ultimately mothballed at a strategic level.
+
+links:
+  Website (Third-Party): https://www.eqos.org/
+
+items:
+  Stakeholder: Jobs For the Future
+  Technology:
+    - AWS API Gateway
+    - Terraform
+    - OpenAPI 3.0
+    - W3C Verifiable Credentials
+    - JSON-LD
+    - React
+    - PHP
+    - Elasticsearch
+
+responsibilities:
+  - Led implementation team for web-based data explorer application.
+  - Application architecture for consumer API and web-based data explorer.
+  - Data modeling, transformation, and integrity checks for supplied research data.
+  - Development of scalable infrastructure using Infrastructure as Code (IoC).

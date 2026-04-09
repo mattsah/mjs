@@ -1,0 +1,48 @@
+<form class="flex flex-col" method="POST" action="/contact" novalidate>
+    <label for="name" class="hidden">Your Name</label>
+    <input
+        id="name"
+        type="text"
+        name="name"
+        class="w-full border border-fore/25 mb-4 rounded-md p-2"
+        placeholder="Your Name"
+        autocomplete="off"
+        value="{{ request.parsedBody.name ? '' }}"
+    />
+    <x:errors path="name" />
+
+    <label for="email" class="hidden">Your Email</label>
+    <input
+        id="email"
+        type="email"
+        name="email"
+        class="w-full border border-fore/25 mb-4 rounded-md p-2"
+        placeholder="Your Email"
+        autocomplete="off"
+        value="{{ request.parsedBody.email ? '' }}"
+    />
+    <x:errors path="email" />
+
+    <label for="msg" class="hidden">Message</label>
+    <textarea
+        id="msg"
+        rows="3"
+        name="msg"
+        class="w-full border border-fore/25 mb-4 rounded-md p-2"
+        placeholder="Message"
+    >{{ request.parsedBody.msg ? '' }}</textarea>
+    <x:errors path="msg" />
+
+    <x:button:main
+        type="submit"
+        x-data:="{submitted: false}"
+        x-on:click:="submitted = true; $nextTick(() => { $el.disabled = true })"
+    >
+        <span class="inline-block animate-spin" x-show="submitted">
+            <x:icon name="refresh-cw" />
+        </span>
+        <span x-show="!submitted">
+            Submit
+        </span>
+    </x:button:main>
+</form>

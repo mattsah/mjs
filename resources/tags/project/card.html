@@ -1,0 +1,50 @@
+<map model />
+
+<a class="block p-4 border bg-storm/25 hover:bg-storm/50 border-storm rounded-md shadow-xl" href="{{ target }}">
+    <section>
+        <h3 class="text-center text-2xl text-olive">{{ title }}</h3>
+        <try>
+            <do if:set="description">
+                <div class="{{ highlight ? 'text-center mb-4' : '' }}">
+                    <markdown>
+                            {{ description }}
+                    </markdown>
+                </div>
+            </do>
+            <do>
+                <raw>
+                    {{ children }}
+                </raw>
+            </do>
+        </try>
+
+        <do if:val="highlight ? false">
+            <img src="{{ feature.image }}" />
+        </do>
+
+        <dl class="mb-4">
+            <do if:set="items">
+                <for key="term" val="data" in:val="items">
+                    <dt class="font-bold mb-2 mt-4 uppercase">
+                        {{ term }}
+                    </dt>
+                    <dd>
+                        <try>
+                            <do if:val="data.is(array) or data.is(object)">
+                                <x:base:pills data:val="data" />
+                            </do>
+                            <do if:val="data.is(string)">
+                                {{ data }}
+                            </do>
+                        </try>
+                    </dd>
+                </for>
+            </do>
+        </dl>
+        <do if:set="note">
+            <p class="text-base italic">
+                <span class="font-bold">Note:</span> {{ note }}
+            </p>
+        </do>
+    </section>
+</a>

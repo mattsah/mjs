@@ -2,6 +2,7 @@
 # Common arguments
 #
 
+--define:ssl
 --threads:on
 --threadAnalysis:off
 --mm:atomicArc # Still required or mummy blows up

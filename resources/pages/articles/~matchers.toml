@@ -1,0 +1,6 @@
+["detail"]
+
+    pattern = "(\\w[\\w-]*)"
+    mapping = [
+        "id"
+    ]

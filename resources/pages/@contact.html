@@ -1,0 +1,18 @@
+<x:main>
+    <section>
+        <try>
+            <do if:val="request.queryParams.success ? (success ? false)">
+                <h1 class="mb-0">Thanks</h1>
+                <x:icon class:="block! w-[10%] mx-auto my-4 text-olive" name="thumbs-up">
+                    test
+                </x:icon>
+                <p class="text-center text-xl">
+                    I'll get back to you as soon as I can!
+                </p>
+            </do>
+            <do>
+                <x:form:contact class:="max-w-[768px] m-auto" />
+            </do>
+        </try>
+    </section>
+</x:main>

@@ -1,0 +1,41 @@
+title: Primd
+tagline: Skills-first tools to maximized shared opportunities.
+description: Skills-first tools to connect shared opportunities between workers, employers, and educators.
+highlight: true
+
+introduction: |
+  Primd was founded April of 2025 as a worker-owned cooperative aimed at re-imagining how we, as a society, find and fill jobs.  Our work focuses on building skills-first and skills-only tools to enable workers and employers to find shared opportunities through alternative hiring and training pathways.
+
+  Using a hybrid startup model combining aspects of non-profit, for-profit and open-source organizations, Primd is bootstrapped by the members who own it.  Time commitments are fully flexible, enabling members to contribute in accordance with other full-time or part-time work for long-term time-proportional equity.
+
+feature:
+  image: /assets/projects/primd/site.png
+
+links:
+  Website: https://primd.app/
+  GitHub: https://github.com/primd-cooperative/
+
+items:
+  Stakeholder: Personal
+  Technology:
+    - HTMX
+    - AlpineJS
+    - Tailwind
+    - PHP
+    - Redis
+    - Memgraph
+    - PostgreSQL
+    - Kafka
+    - LLMs
+
+responsibilities:
+  - Operations infrastructure, accounting, and contracts.
+  - Product architecture (software and systems design).
+  - Back-end and front-end application code and implementation.
+
+#sections:
+#  - type: gallery
+#    title: Select Screenshots
+#    data:
+#      /assets/projects/primd/site.png: Primd public website
+#      /assets/projects/primd/app.png: Primd progressive web app
