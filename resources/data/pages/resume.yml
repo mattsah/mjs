@@ -27,9 +27,9 @@ experience:
       - |
         Architected and led implementation for mobile Progressive Web Application (PWA), supporting an asynchronous event-driven data layer and providing no-build component-based UI development.
       - |
-        Investigated, deployed, integrated and supported open source tools to build a cost-effective and privacy-oriented collaborative infrastructure, including shared documents, video conferencing, and centralized identity provider with SSO across all tools.
+        Investigated, deployed, integrated and supported open source tools to build a cost-effective and privacy-oriented collaborative infrastructure, including shared documents, video conferencing, and a centralized identity provider with SSO across all tools.
       - |
-        Established four-person founding team and operating guidelines in accordance with cooperative principles.
+        Established a four-person founding team and operating guidelines in accordance with cooperative principles.
 
   - title: Jobs For the Future
     dates: <time>Aug 2023</time> - <time>Apr 2025</time>
@@ -62,7 +62,7 @@ experience:
       - |
         Led technical implementation team for Job Corps' (US Department of Labor) nationwide career planning platform: MyPACE, serving 150,000+ students — automating compliance reporting, optimizing feature pages for >80% reduction in wait times, and creating proof-of-concept RAG-based AI support systems.
       - |
-        Supported multiple external teams, executing on IT consolidation efforts for consecutive monthly reductions in cost and developing turn-key data systems for an internal Research and Analytics initiative, beating projected the budget by ~75%.
+        Supported multiple external teams, executing on IT consolidation efforts for consecutive monthly reductions in cost and developing turn-key data systems for an internal Research and Analytics initiative, beating the projected budget by ~75%.
 
   - title: Imarc
     dates: <time>2009</time>; <time>Aug 2011</time> - <time>Aug 2023</time>
