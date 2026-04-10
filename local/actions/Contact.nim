@@ -24,7 +24,7 @@ begin Contact:
         if strip(msg).len < 64:
             result.set("msg.invalid", %"Please give more context")
 
-    method invoke*(): Response =
+    method invoke(): Response =
         let
             smtp = this.app.get(Smtp)
             errors = this.validate()

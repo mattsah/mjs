@@ -24,7 +24,6 @@
                                 <a href="{{ url }}">{{ name }}</a>
                             </do>
                         </try>
-
                     </x>
                 </for>
             </section>
@@ -53,13 +52,13 @@
         </do>
     </section>
     <do if:val="(project.sections ? []).len">
-        <section class="grid @xl:grid-cols-2 gap-8">
-            <for val="section" in:val="project.sections">
-                <section>
-                    <h3 class="text-2xl">{{ section.title }}</h3>
-                    <x:project:section type:val="section.type" data:val="section.data" />
-                </section>
-            </for>
-        </section>
+        <for val="section" in:val="project.sections">
+            <section>
+                <do if:val="section.title ? false">
+                    <h3>{{ section.title }}</h3>
+                </do>
+                <x:project:section model:val="section" />
+            </section>
+        </for>
     </do>
 </x:main>

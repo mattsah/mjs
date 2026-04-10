@@ -35,7 +35,8 @@ function normalizeIndentation(text) {
     return normalizedLines.join('\n').trim();
 }
 
-document.addEventListener('DOMContentLoaded', function () {
+
+function refreshHLJS() {
     const hljsTags = document.querySelectorAll('pre > code');
 
     hljsTags.forEach((hljsTag, index) => {
@@ -48,6 +49,11 @@ document.addEventListener('DOMContentLoaded', function () {
     })
 
     hljs.highlightAll();
+}
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    refreshHLJS();
 });
 
 
@@ -75,4 +81,8 @@ htmx.on("htmx:beforeSwap", (e) => {
         e.detail.shouldSwap = true;
         e.detail.isError = false;
     }
+})
+
+htmx.on("htmx:afterSwap", (e) => {
+    refreshHLJS();
 })

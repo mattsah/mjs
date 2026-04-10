@@ -29,5 +29,94 @@ items:
 
 responsibilities:
   - Core concepts and initial meta-framework implementation
-  - Official module development and ecosystem integration
-  - Maintenance of supporting tools, such as <a href="#percy">Percy</a>
+  - Official module development and broader Nim ecosystem integration
+  - Maintenance of supporting tools and documentation of related projects
+
+sections:
+  - type: grid
+    data:
+      - type: markdown
+        title: OOP Features
+        span: 8
+        data:
+          body: |
+            Mininim adds common conventions that faciliate a more traditional object-oriented approach, despite Nim's more procedural nature.  This includes keywords like `this`, `self`, and `super` when used within the `begin` macro.
+
+            ```nim
+            import
+              mininim,
+              mininim/web/router
+
+            type
+              HelloWorld: ref object of AbstractAction
+                name: string
+
+            begin HelloWorld:
+              method init(name: string): void =
+                this.name = name
+
+              method invoke(): Response =
+                let
+                  name = this.get("name", this.name)
+                result = this.html(
+                  "resources/hello.html",
+                  (name: name)
+                )
+            ```
+      - type: markdown
+        title: Modular Configuration
+        span: 8
+        data:
+          body: |
+            Using the `shape` macro allows you to decorate your classes to enable specific features.  Here, we add a route entry that will call the `HelloWorld` class's `invoke()` method when the matching path is access on the HTTP server.  Each decorator is referred to as a "facet."  The addition of the delegate facet allows you to overload how Mininim constructs an instance of the class when obtained via the IoC container.
+
+            ```nim
+            shape HelloWorld: @[
+              Delegate(
+                call: DelegateHook as (
+                  block:
+                    result = shape.init("World")
+                )
+              ),
+              Route(
+                path: "/hello/{name:.*}",
+                methods: @[HttpGet]
+              )
+            ]
+            ```
+      - type: markdown
+        title: Dynamic Templating
+        span: 8
+        data:
+          body: |
+            Traditional Nim templating options require recompilation with even the slighest changes.  My focus on developer experience over absolute performance led me down a different path.  Initial development focused on the creation of a simple dynamic type system and an a simple expression parser that allows for evaluation with a provided scope.  In order to implement control flow and in-template assignment, this was paired with a extensible DOM pre-renderer replicating work I've done on other component-based template systems.  The result looks like custom HTML with a more limited, but familiar, Jinja like expression syntax:
+
+            ```twig
+            <do if:val="(items ? []).len">
+              <section>
+                  <h2>My Items</h2>
+                  <ul>
+                    <for val="item" in:val="items">
+                      <li>
+                        <markdown>
+                          {{ item }}
+                        </markdown>
+                      </li>
+                    </for>
+                  </ul>
+              </section>
+            </do>
+            ```
+
+      - type: markdown
+        title: Supporting Tools
+        span: 8
+        data:
+          body: |
+            The Nim ecosystem is wide, but shallow.  There are tools, packages, and libraries for most things you can think of, but they are often old and burdened with legacy.  That, IMO, included existing package managers.  Using Mininim's CLI modules, I created Percy over the course of a few weeks to solve that problem.  [Percy](https://github.com/mattsah/percy) is a package manager that emphasizes early modularization and developer focused package management by:
+
+            - Being unapologetically git-centric and making use of project local worktrees while still using central repository caching to improve footprint and performance.
+            - Providing first-class support for HEAD, branch, and tag tracking by resolving all final dependencies to active commit hashes.
+            - Enabling easy overloading of package names and locations, as well as the addition of private package indexes.
+
+            While Mininim and Percy remain in very early stages and are not my primary focus, the long-term goal is to develop a comprehensive, robust, and highly stable ecosystem.  If you want to see more Mininim code, [check out the code for this portfolio site](https://github.com/mattsah/mjs).

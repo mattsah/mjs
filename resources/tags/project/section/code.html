@@ -1,0 +1,12 @@
+<div class="flex flex-col gap-4" x-data>
+    <markdown>
+        {{ data.body }}
+    </markdown>
+    <do if:val="data.description ? null">
+        <div>
+            <markdown>
+                {{ data.description }}
+            </markdown>
+        </div>
+    </do>
+</div>

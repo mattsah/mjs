@@ -33,9 +33,92 @@ responsibilities:
   - Product architecture (software and systems design).
   - Back-end and front-end application code and implementation.
 
-#sections:
-#  - type: gallery
-#    title: Select Screenshots
-#    data:
-#      /assets/projects/primd/site.png: Primd public website
-#      /assets/projects/primd/app.png: Primd progressive web app
+sections:
+  - type: grid
+    title: Comprehensive Collaboration Tools
+    data:
+      - type: markdown
+        span: 8
+        data:
+          body: |
+            As a 100% bootstrapped initiative, keeping the costs of collaboration low was a significant concern.  Employing my experience with system administration and knowledge of open source alternatives enabled Primd's internal infrastrucutre to operate at cost of ~$100 annually for the first 2 years.  We use:
+
+            - <strong><em>Nextcloud</em></strong> as an essential groupware entrypoint (shared files, chat, and video conferencing)
+            - <strong><em>OnlyOffice</em></strong> to edit and collaborate on documents online.
+            - <strong><em>Authentik</em></strong> for centralized single sign-on authentication to the above, as well as <em>ListMonk</em> (e-mail marketing), <em>Kimai</em> (time tracking), and <em>Freescout</em> (support systems), and more!
+
+            Looking for your own cost-effective solutions for internal operations? <a href="/contact">Contact me</a>!
+      - type: code
+        span: 8
+        data:
+          body: |
+            ```yaml
+            services:
+              onlyoffice:
+                image: docker.io/onlyoffice/documentserver:latest
+                container_name: onlyoffice
+                restart: unless-stopped
+                env_file:
+                  - path: ./.env
+                    required: true
+                volumes:
+                  - ./data:/var/www/onlyoffice/Data
+                  - ./fonts:/usr/share/fonts
+                networks:
+                  - default
+                ports:
+                  - "8040:80"
+
+            networks:
+              default:
+                name: primd
+                external: true
+            ```
+  - type: grid
+    title: Open Source Code
+    data:
+      - type: markdown
+        span: 4
+        data:
+          body: |
+            ![Graph database representation](/assets/projects/primd/memgraph.png)
+      - type: html
+        span: 12
+        data:
+          body: |
+            <p>
+              Primd isn't just experimenting with a skills-first approach, we're also trying new technologies.  We chose Memgraph as a performance-focused alternative to the more common Neo4j, unfortunately, integration options were limited.  Enter <em>FluidGraph</em>, our first open source library and a completely novel approach to stateful entity managers.
+            </p>
+            <x:button:main url="https://github.com/primd-cooperative/fluidgraph">Visit the FluidGraph Repository</x:button:main>
+  - type: grid
+    title: A No-Build Progressive Web App (PWA)
+    data:
+      - type: markdown
+        span: 10
+        data:
+          body: |
+            Why a no-build PWA?  Progressive Web Apps encapsulate the promise and simplicity of the modern web which, somewhat ironically, started to abandon this promise with the rise of large front-end frameworks like React.  We want to try and keep that spirit alive.  Accordingly, Primd is consciously and unapologetically built around technologies that aim to preserve the transparency and accessibility of Hypermedia.
+
+            That doesn't mean we forego the benefits of modern web-app development.  Using a combination of server-side components, <em>HTMX</em>, <em>AlpineJS</em>, and <em>Tailwind</em> we create re-usable patterns that improve developer experience and keep things consistent.
+
+            Here's an example of what our code looks like:
+
+            ```twig
+            <x:live>
+                <x:form-range
+                    name="confidence"
+                    label="What is your confidence in their ability?"
+                    scale={% v: {
+                        1: 'low',
+                        5: 'high'
+                    } %}
+                />
+            </x:live>
+            ```
+      - type: markdown
+        span: 6
+        data:
+          body: |
+            ![Screenshot of the Primd PWA](/assets/projects/primd/app.png)
+
+

@@ -1,4 +1,26 @@
+<map model />
 <try>
+    <do if:val="type == 'grid'">
+        <div class="grid @xl:grid-cols-16 gap-8">
+            <for val="item" in:val="data">
+                <section class="@xl:col-span-{{ item.span ? 8 }}">
+                    <do if:val="item.title ? false">
+                        <h4 class="text-2xl">{{ item.title }}</h4>
+                    </do>
+                    <x:project:section model:val="item" />
+                </section>
+            </for>
+        </div>
+    </do>
+    <do if:val="type == 'html'">
+        <x:project:section:html data:val="data" />
+    </do>
+    <do if:val="type == 'code'">
+        <x:project:section:code data:val="data" />
+    </do>
+    <do if:val="type == 'markdown'">
+        <x:project:section:markdown data:val="data" />
+    </do>
     <do if:val="type == 'gallery'">
         <x:project:section:gallery data:val="data" />
     </do>

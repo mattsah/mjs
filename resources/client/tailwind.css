@@ -4,6 +4,8 @@
 @import "tailwindcss" source("..");
 
 @source inline("order-{1..32}");
+@source inline("@{md,lg,xl}:grid-cols-{1..16}");
+@source inline("@{md,lg,xl}:col-span-{1..16}");
 
 @theme {
     /**
@@ -151,11 +153,11 @@
     }
 
     code {
-        @apply inline-block! rounded-lg overflow-hidden border-water bg-black/20! border border-dashed text-sm align-middle py-0.5! px-[1ch]! text-olive mx-auto font-mono;
+        @apply inline-block rounded-lg overflow-hidden border-water bg-black/20! border border-dashed text-sm align-middle py-0.5! px-[1ch]! text-olive mx-auto font-mono;
     }
 
     pre > code {
-        @apply w-full @xl:w-auto rounded-lg overflow-hidden border-water bg-black/20! border border-dashed text-sm mb-4 whitespace-pre p-4!;
+        @apply w-full @xl:w-auto rounded-lg overflow-hidden border-water bg-black/20! border border-dashed text-sm whitespace-pre p-4!;
     }
 
     nav {
