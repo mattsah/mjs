@@ -152,27 +152,15 @@
                 </header>
                 <section>
                     <p class="text-sm">
-                        As an avid DIYer, I have a wide variety of interests and self-taught skills.  If something needs doing or grabs my attention, I want to learn it.
+                        {{ page.hobbies.intro }}
                     </p>
                     <ul class="null">
-                        <x class:="mb-1">
-                            <li>
+                        <for val="item" in:val="page.hobbies.items">
+                            <li class="mb-1">
                                 <x:icon class:="mr-2" name="wrench" />
-                                Motorcycle repair, maintenance, and modification.
+                                {{ item }}
                             </li>
-                            <li>
-                                <x:icon class:="mr-2" name="images" />
-                                Digital art, music, and video editing.
-                            </li>
-                            <li>
-                                <x:icon class:="mr-2" name="omega" />
-                                Philosophy, political and economic theory.
-                            </li>
-                            <li>
-                                <x:icon class:="mr-2" name="mountain" />
-                                Archery, nature, and self-sustainability.
-                            </li>
-                        </x>
+                        </for>
                     </ul>
                 </section>
             </section>

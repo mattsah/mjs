@@ -171,6 +171,11 @@
         @apply list-disc list-outside not-only:mt-2 not-last:mb-2 ml-[1.5ch] italic text-fore/80;
     }
 
+    ol:not([class]),
+    ul.default {
+        @apply list-decimal list-outside not-only:mt-2 not-last:mb-2 ml-[1.5ch] italic text-fore/80;
+    }
+
     .contain {
         @apply px-4 @lg:px-24 @2xl:px-[calc((100%-var(--container-xl))/2)] print:px-0! print:left-0!;
     }

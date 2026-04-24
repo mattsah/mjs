@@ -27,7 +27,7 @@ experience:
       - |
         Architected and led implementation for mobile Progressive Web Application (PWA), supporting an asynchronous event-driven data layer and providing no-build component-based UI development.
       - |
-        Investigated, deployed, integrated and supported open source tools to build a cost-effective and privacy-oriented collaborative infrastructure, including shared documents, video conferencing, and a centralized identity provider with SSO across all tools.
+        Investigated, deployed, integrated, and supported open source tools to build a cost-effective and privacy-oriented collaborative infrastructure, including shared documents, video conferencing, and a centralized identity provider with SSO across all tools.
       - |
         Established a four-person founding team and operating guidelines in accordance with cooperative principles.
 
@@ -99,4 +99,11 @@ experience:
       - |
         Developed and maintained dozens of client websites and web-based applications, including: SSH and Tuft's SPEC Database.
       - |
-        Executed on-site contract work for Motorola, maintaining developer systems for an early non-US app store alternative to Google Play and managed the infrastructure and systems shutdown following Google's purchase of Motorola.
+        Executed on-site contract work for Motorola, maintaining developer systems for an early non-US app store alternative to Google Play, and managed the infrastructure and systems shutdown following Google's purchase of Motorola.
+hobbies:
+  intro: As an avid DIYer, I have a wide variety of interests and self-taught skills.  If something needs doing or grabs my attention, I want to learn it.
+  items:
+    - Motorcycle repair, maintenance, and modification.
+    - Digital art, music, and video editing.
+    - Philosophy, political and economic theory.
+    - Archery, nature, and self-sustainability.

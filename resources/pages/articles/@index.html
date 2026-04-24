@@ -1,5 +1,9 @@
 <x:main>
+    <set articles:data="articles/index" />
     <header>
         <h1 class="text-center">A Collection of My Thoughts</h1>
+        <for val="article" in:val="articles.sort(`val.date`, true)">
+            {{ article.title }}
+        </for>
     </header>
 </x:main>
